@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# Visible Company Profile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A responsive company profile website for **Visible Technologies International Corp.**, showcasing the company's IT solutions, technology partners, clients, projects, and contact information.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+Visible Technologies International provides customized, end-to-end technology solutions for organizations of all sizes. This React website presents its services and project portfolio in an accessible, mobile-friendly interface.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Company overview, mission, vision, and leadership
+- IT solutions organized by category:
+  - Physical security
+  - Cybersecurity
+  - Wireless connectivity
+  - Communication devices
+  - Building management
+  - Structured cabling
+  - Cloud computing
+- Technology partner showcases
+- Client project highlights
+- Responsive project gallery with image previews
+- Contact details and embedded Google Map
+- Responsive navigation and layouts
+- GitHub Pages deployment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technology Stack
 
-### `npm test`
+- React 19
+- React Router
+- JavaScript and JSX
+- CSS
+- Create React App
+- GitHub Pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Pages
 
-### `npm run build`
+| Page | Route | Description |
+| --- | --- | --- |
+| Home | `/` | Company introduction, services, and why-choose-us section |
+| Company | `/company` | Mission, vision, and company leadership |
+| Solutions | `/solution` | Product and solution categories |
+| Partners | `/partners` | Technology and service partners |
+| Clients | `/clients` | Featured client projects |
+| Gallery | `/gall` | Project photo gallery |
+| Contact | `/contact` | Address, phone numbers, email, map, and contact form |
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Getting Started
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Prerequisites
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Node.js 18 or newer
+- npm
 
-### `npm run eject`
+### Installation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+git clone https://github.com/Ritzqtt/Visible-Company-Profile.git
+cd Visible-Company-Profile
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Run Locally
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Open http://localhost:3000 in your browser.
 
-## Learn More
+### Build for Production
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm run build
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The optimized production build is generated in the `build/` directory.
 
-### Code Splitting
+## Deploy to GitHub Pages
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The deployment script is configured in `package.json`.
 
-### Analyzing the Bundle Size
+```bash
+npm run deploy
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This builds the project and publishes the `build/` directory to the `gh-pages` branch.
 
-### Making a Progressive Web App
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **Company:** Visible Technologies International Corp.
+- **Email:** sales@vtic.ph
+- **Phone:** 0949-740-2779 / 0917-465-5234
+- **Telephone:** (02) 8244-6562
+- **Address:** GF Unit 102, Tower 3, The Ridgewood Towers, C5 Road (Ususan), Taguig City, Philippines
 
-### Advanced Configuration
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is currently provided for the Visible Technologies International company profile. Add a license if you intend to make the source code available for reuse.
