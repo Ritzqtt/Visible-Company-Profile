@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import fireSystemImage from "../assets/gall5.jpg";
 
 const Solution = () => {
   const [expandedIds, setExpandedIds] = useState([]);
@@ -44,7 +45,7 @@ const Solution = () => {
           id: "fire", 
           name: "FIRE DETECTION AND ALARM SYSTEM", 
           desc: "Detects and alerts individuals to potential threats or emergencies, typically through sensors and audible or visual devices, providing real-time notifications and monitoring continuously.",
-          image: "https://racam.co.uk/wp-content/uploads/2024/09/b80a2881thumbnail-840x512.jpeg",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkfBt5lyvUbNHQyN6X8YLhYd_IM4BiYdtsEdTIEcaZsHPOif3rWIb3cK4&s=10",
           solutionsList: ["Fire Supression System (FM200)", "Fire Detection and Alarm system (FDAS)", 
             "ADS Clean Agent Suppression System", "ECS FM200 & NOVEC1230 Clean Agent Gas Suppression System", "Air Intelligence System", "Inert Gas Suppression System", "Kitchen Suppression System"
           , "CO2 Fire Suppression System"],
@@ -157,7 +158,7 @@ const Solution = () => {
     <div>
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{margin:'151px'}}>
+          <div className="hero-content">
             <h1>WHAT DO WE OFFER?</h1>
             <p>Delivering smart, scalable, annd customized IT solution to solve your toughest challenges.</p>
           </div>
@@ -173,14 +174,14 @@ const Solution = () => {
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: cat.type === 'grid' ? 'repeat(auto-fit, minmax(320px, 1fr))' : '1fr', 
+            gridTemplateColumns: cat.type === 'grid' ? 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))' : '1fr',
             gap: '25px' 
           }}>
             {cat.items.map((item) => (
               <div key={item.id} style={cardStyle}>
-                <div style={{ display: cat.type === 'wide' ? 'flex' : 'block', gap: '20px' }}>
+                <div className={cat.type === 'wide' ? 'solution-card-row solution-card-row--wide' : 'solution-card-row'}>
                   <div className="card-image" style={{ 
-                    width: cat.type === 'wide' ? '400px' : '100%', 
+                    width: cat.type === 'wide' ? 'min(400px, 100%)' : '100%',
                     height: '220px', 
                     backgroundImage: `url(${item.image})`,
                     backgroundSize: 'cover',
@@ -264,7 +265,7 @@ const containerStyle = {
 const headerStyle = { 
   textAlign: 'center', 
   marginBottom: '40px', 
-  fontSize: '3rem', 
+  fontSize: 'clamp(1.8rem, 7vw, 3rem)',
   fontWeight: '800'
 };
 
@@ -333,7 +334,7 @@ const productOverviewTextStyle = {
 };
 const listGridStyle = { 
   display: 'grid', 
-  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+  gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
   gap: '20px', 
   marginTop: '20px', 
   alignItems: 'flex-start' 

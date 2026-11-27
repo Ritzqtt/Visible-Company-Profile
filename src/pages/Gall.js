@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
 
 import gall1 from "../assets/gall1.webp";
 import gall2 from "../assets/gall2.webp";
@@ -38,11 +37,6 @@ const images = [
 const Gall = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -65,7 +59,6 @@ const Gall = () => {
     },
     galleryGrid: { 
       display: "grid", 
-      gridTemplateColumns: "repeat(4, 1fr)", 
       gridAutoFlow: "dense", 
       gridAutoRows: "250px", 
       gap: "15px" 
@@ -173,7 +166,7 @@ const Gall = () => {
 
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{marginLeft:'150px'}}>
+          <div className="hero-content">
             <h1>WHAT HAVE WE ACCOMPLISHED?</h1>
             <p>Showcasing our journey, milesones, creative, or minimal depending on you brand voice.</p>
           </div>
@@ -182,7 +175,7 @@ const Gall = () => {
 
       <section style={styles.sectionWhite}>
         <div style={styles.container}>
-          <div style={styles.galleryGrid}>
+          <div className="gallery-grid" style={styles.galleryGrid}>
             {images.map((imgObj, index) => (
               <div
                 key={index}

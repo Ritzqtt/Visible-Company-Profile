@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import "./App.css";
 import logo from "./assets/vtic.webp";
 
@@ -18,11 +18,107 @@ import iconEndToEnd from "./assets/end to end solutions.png";
 import iconInnovation from "./assets/innovative solution.png";
 import iconQuality from "./assets/high quality service.png";
 
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+const Navigation = ({
+  isScrolled,
+  isMenuOpen,
+  setIsMenuOpen,
+  isPartnersOpen,
+  setIsPartnersOpen,
+  closeMenu,
+}) => {
+  const { pathname } = useLocation();
+  const partnerPageActive = pathname === "/partners" || pathname === "/clients";
+  const linkClassName = (path) => (pathname === path ? "active" : undefined);
+
+  return (
+    <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      <div className="nav-container">
+        <div className="logo">
+          <Link to="/" onClick={closeMenu}>
+            <img src={logo} alt="VTIC Logo" />
+          </Link>
+        </div>
+        <button
+          type="button"
+          className={`nav-toggle${isMenuOpen ? " is-open" : ""}`}
+          aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <ul id="primary-navigation" className={`nav-links${isMenuOpen ? " is-open" : ""}`}>
+          <li>
+            <Link to="/" className={linkClassName("/")} aria-current={pathname === "/" ? "page" : undefined} onClick={closeMenu}>
+              HOME
+            </Link>
+          </li>
+          <li>
+            <Link to="/company" className={linkClassName("/company")} aria-current={pathname === "/company" ? "page" : undefined} onClick={closeMenu}>
+              COMPANY
+            </Link>
+          </li>
+          <li>
+            <Link to="/solution" className={linkClassName("/solution")} aria-current={pathname === "/solution" ? "page" : undefined} onClick={closeMenu}>
+              SOLUTION
+            </Link>
+          </li>
+          <li className={`dropdown${isPartnersOpen ? " is-open" : ""}`}>
+            <button
+              type="button"
+              className={`dropdown-title${partnerPageActive ? " active" : ""}`}
+              aria-expanded={isPartnersOpen}
+              aria-current={partnerPageActive ? "page" : undefined}
+              onClick={() => setIsPartnersOpen((open) => !open)}
+            >
+              PARTNERS AND CLIENT ▾
+            </button>
+            <ul className="dropdown-menu">
+              <li><Link to="/partners" className={linkClassName("/partners")} aria-current={pathname === "/partners" ? "page" : undefined} onClick={closeMenu}>Partners</Link></li>
+              <li><Link to="/clients" className={linkClassName("/clients")} aria-current={pathname === "/clients" ? "page" : undefined} onClick={closeMenu}>Clients</Link></li>
+            </ul>
+          </li>
+          <li>
+            <Link to="/gall" className={linkClassName("/gall")} aria-current={pathname === "/gall" ? "page" : undefined} onClick={closeMenu}>
+              GALLERY
+            </Link>
+          </li>
+          <li>
+            <Link to="/contact" className={`contact-btn${pathname === "/contact" ? " active" : ""}`} aria-current={pathname === "/contact" ? "page" : undefined} onClick={closeMenu}>
+              CONTACT
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  );
+};
+
 const App = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isPartnersOpen, setIsPartnersOpen] = useState(false);
 
   const aboutRef = useRef(null);
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+    setIsPartnersOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,7 +150,7 @@ const App = () => {
     <div className="landing-page">
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{ margin: '150px' }}>
+          <div className="hero-content">
             <h1>VISIBLE</h1>
             <p>Transforming your Businesses through innovative IT Solutions!</p>
             <button className="primary-cta" onClick={scrollToAbout}>
@@ -196,27 +292,15 @@ const App = () => {
 
   return (
     <Router>
-      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
-        <div className="nav-container">
-          <div className="logo">
-            <Link to="/"><img src={logo} alt="VTIC Logo" /></Link>
-          </div>
-          <ul className="nav-links">
-            <li><Link to="/">HOME</Link></li>
-            <li><Link to="/company">COMPANY</Link></li>
-            <li><Link to="/solution">SOLUTION</Link></li>
-            <li className="dropdown">
-              <span className="dropdown-title">PARTNERS AND CLIENT ▾</span>
-              <ul className="dropdown-menu">
-                <li><Link to="/partners">Partners</Link></li>
-                <li><Link to="/clients">Clients</Link></li>
-              </ul>
-            </li>
-            <li><Link to="/gall">GALLERY</Link></li>
-            <li><Link to="/contact" className="contact-btn">CONTACT</Link></li>
-          </ul>
-        </div>
-      </nav>
+      <ScrollToTop />
+      <Navigation
+        isScrolled={isScrolled}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+        isPartnersOpen={isPartnersOpen}
+        setIsPartnersOpen={setIsPartnersOpen}
+        closeMenu={closeMenu}
+      />
 
       <Routes>
         <Route path="/" element={<LandingPage />} />

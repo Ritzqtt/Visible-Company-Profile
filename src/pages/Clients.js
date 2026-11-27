@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 
 const clients = [
   {
@@ -40,13 +39,8 @@ const clients = [
 ];
 
 const Clients = () => {
-  const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 100);
@@ -159,7 +153,7 @@ const Clients = () => {
       marginBottom: "50px",
     },
     title: {
-      fontSize: "3rem",
+      fontSize: "clamp(1.6rem, 6vw, 3rem)",
       fontWeight: 800,
       textTransform: "uppercase",
       letterSpacing: "1px",
@@ -200,7 +194,7 @@ const Clients = () => {
 
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{ marginLeft: "150px" }}>
+          <div className="hero-content">
             <h1>WHO ARE CLIENTS?</h1>
             <p>Serving our clients wuth dedication, innovation, and solution that drive real business success.</p>
           </div>
@@ -217,7 +211,7 @@ const Clients = () => {
           <div
             style={{
               ...styles.grid,
-              gridTemplateColumns: "repeat(3, 1fr)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
             }}
           >
             {clients.slice(0, 3).map((client, i) => (
@@ -227,7 +221,7 @@ const Clients = () => {
           <div
             style={{
               ...styles.grid,
-              gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
               marginTop: "30px",
             }}
           >

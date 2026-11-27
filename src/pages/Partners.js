@@ -68,6 +68,8 @@ const hostingLogos = [
   "/logos/hostingLogos/supermicr.png"
 ];
 
+const publicAsset = (path) => `${process.env.PUBLIC_URL}${path}`;
+
 const LogoSlider = ({ title, bgColor, logos }) => {
   const loopLogos = [...logos, ...logos];
   
@@ -79,7 +81,7 @@ const LogoSlider = ({ title, bgColor, logos }) => {
         <div className="logo-track">
           {loopLogos.map((logo, index) => (
             <div key={index} className="logo-card">
-              <img src={logo} alt="logo" />
+              <img src={publicAsset(logo)} alt="logo" />
             </div>
           ))}
         </div>
@@ -128,7 +130,7 @@ const Partners = () => {
     <div>
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{ marginLeft: "150px" }}>
+          <div className="hero-content">
             <h1>WHO ARE PARTNERS?</h1>
             <p>Buildng strong partnership through trust, collaboration, and shared growth.</p>
           </div>

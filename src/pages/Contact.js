@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+const publicAsset = (path) => `${process.env.PUBLIC_URL}${path}`;
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -82,7 +84,7 @@ const Contact = () => {
     <div>
       <header className="hero">
         <div className="hero-overlay">
-          <div className="hero-content" style={{margin:'151px'}}>
+          <div className="hero-content">
             <h1>HOW CAN WE HELP YOU?</h1>
             <p>Get in touch with us to discuss how can we support your business needs.</p>
           </div>
@@ -114,7 +116,7 @@ const Contact = () => {
 
               <div className="info-card">
                 <div className="icon-box">
-                  <img src="/icons/building.png" alt="Office" />
+                  <img src={publicAsset("/icons/building.png")} alt="Office" />
                 </div>
                 <div>
                   <h4>Ridgewood</h4>
@@ -133,7 +135,7 @@ const Contact = () => {
 
               <div className="info-card">
                 <div className="icon-box">
-                  <img src="/icons/city.png" alt="City" />
+                  <img src={publicAsset("/icons/city.png")} alt="City" />
                 </div>
                 <div>
                   <h4>Taguig City</h4>
@@ -152,7 +154,7 @@ const Contact = () => {
 
               <div className="info-card">
                 <div className="icon-box">
-                  <img src="/icons/phone.png" alt="Phone" />
+                  <img src={publicAsset("/icons/phone.png")} alt="Phone" />
                 </div>
                 <div>
                   <h4>Phone Call</h4>
@@ -166,7 +168,7 @@ const Contact = () => {
 
               <div className="info-card">
                 <div className="icon-box">
-                  <img src="/icons/email.png" alt="Email" />
+                  <img src={publicAsset("/icons/email.png")} alt="Email" />
                 </div>
                 <div>
                   <h4>Send Us A Message</h4>
